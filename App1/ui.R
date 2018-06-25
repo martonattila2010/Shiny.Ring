@@ -1,73 +1,38 @@
 library(shiny)
-
+library(ggplot2)
+library(tidyverse)
+library(DT)
 
 
 options(encoding = 'UTF-8')
-
 Sys.setlocale(category = 'LC_ALL','en_US.UTF-8')
 
-
-
-# Define UI for application that plots something
-
+library(shiny)
+# Gyuruzeses adatbazik RShiny
 shinyUI(fluidPage(
   
+  titlePanel("OpenRingMaps Species Abundance"),
   
-  
-  #headerPanel(paste(project," species density")),
-  
-  titlePanel("OBM stats"),
-  
-  
-  
-  sidebarPanel(
+  sidebarLayout(
     
-    selectInput("state", "Choose a sevice:",
-                
-                list(`Last month` = c("All uploads", "My data", "..."),
-                     
-                     `This month` = c("All uploads", "My data", "..."),
-                     
-                     `Last year` = c("All uploads", "My data", "..."),
-                     
-                     `This year` = c("All uploads", "My data", "..."))
-                
+    #Input
+    sidebarPanel(
+      selectInput(inputId  = "species",
+                  label    = "Species:", 
+                  choices  = c(df$species),
+                  #selected = "Ficedula parva",
+                  selectize = TRUE),
+      
+      selectInput(inputId   = "breaks",
+                  label     = "Breaks of histogram:",
+                  choices   = c("days", "weeks", "months"),
+                  selected  = "days")
     ),
     
-    
-    
-    uiOutput("gyujto"),
-    
-    
-    
-    textOutput("text"),
-    
-    
-    
-    uiOutput('speciesList')
-    
-  ),
-  
-  mainPanel(
-    
-    plotOutput("distPlot")
-    
+    #Output
+    mainPanel(
+      plotOutput("distPlot")
+   )
   )
-  
-  
-  
-  #sidebarPanel(
-  
-  #    selectInput("Hbreaks", label = "Breaks of histogram:",choices = c("days", "weeks", "months"))
-  
-  #),
-  
-  
-  
-  #mainPanel(
-  
-  #    plotOutput("distPlot")
-  
-  #)
-  
-))
+ )
+)
