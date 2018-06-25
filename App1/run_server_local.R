@@ -1,23 +1,13 @@
-#!/usr/bin/env Rscript
 
-# run R-shiny server in OpenBioMaps
-
-
-
-# Rscript --vanilla run_server.R 7287 sscript_path
-
-
+setwd("D:/ORM/ShinyRing/Shiny.Ring/App1")
 
 args = commandArgs(trailingOnly=TRUE)
 
 if (length(args)==0) {
-  
-  stop("Missing arguments: Port number, Shiny path, [Project,...]!", call.=FALSE)
-  
+    stop("Missing arguments: Port number, Shiny path, [Project,...]!", call.=FALSE)
 }
 
 source('pw.R')
-
 
 ppass <- pw$ppass
 database <- pw$database

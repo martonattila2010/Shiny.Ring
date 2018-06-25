@@ -1,19 +1,19 @@
 
+# Servers settings
 library(shiny)
+library(RPostgreSQL)
 
 
 
 options(encoding = 'UTF-8')
-
 Sys.setlocale(category = 'LC_ALL','en_US.UTF-8')
 
 
 
 # Database connection
 
-library(RPostgreSQL)
 
-dbport <- 5432
+
 
 # variables from run_server.R (OpenBioMaps Rscript exec())
 
